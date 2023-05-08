@@ -4,7 +4,7 @@
         "type": "function",
         "z": "ea4925064d82461c",
         "name": "arivedHomeAtNight",
-        "func": "var david = flow.get(\"david\");\nvar davidOld = flow.get(\"davidOld\");\nvar sara = flow.get(\"sara\");\nvar saraOld = flow.get(\"saraOld\");\nvar sun = flow.get(\"sun\");\n\nif (david == \"home\" && sun === \"above_horizon\") {\n    flow.set(\"davidOld\", \"home\")\n}\nelse if (david == \"home\" && sun === \"below_horizon\") {\n    if (sun === \"below_horizon\" && davidOld == \"away\"){\n        msg.payload = \"On\";\n        return msg;\n    }\n}\n\nelse if (sara == \"home\" && sun === \"above_horizon\") {\n    flow.set(\"saraOld\", \"home\")\n}\nelse if (sara == \"home\" && sun === \"below_horizon\") {\n    if (sun === \"below_horizon\" && saraOld == \"away\") {\n        msg.payload = \"On\";\n        return msg;\n    }\n}",
+        "func": "var david = flow.get(\"david\");\nvar davidOld = flow.get(\"davidOld\");\nvar sara = flow.get(\"sara\");\nvar saraOld = flow.get(\"saraOld\");\nvar sun = flow.get(\"sun\");\n\nif (david == \"home\" && sun === \"above_horizon\") {\n    flow.set(\"davidOld\", \"home\")\n}\nelse if (david == \"home\" && sun === \"below_horizon\") {\n    if (sun === \"below_horizon\" && davidOld == \"not_home\"){\n        msg.payload = \"On\";\n        return msg;\n    }\n}\n\nelse if (sara == \"home\" && sun === \"above_horizon\") {\n    flow.set(\"saraOld\", \"home\")\n}\nelse if (sara == \"home\" && sun === \"below_horizon\") {\n    if (sun === \"below_horizon\" && saraOld == \"not_home\") {\n        msg.payload = \"On\";\n        return msg;\n    }\n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
