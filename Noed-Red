@@ -1,22 +1,1034 @@
 [
     {
-        "id": "230dd2cad769c256",
+        "id": "ea4925064d82461c",
+        "type": "tab",
+        "label": "Home at night",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f66ef985b815500f",
+        "type": "api-call-service",
+        "z": "ea4925064d82461c",
+        "name": "LightsOn",
+        "server": "315411fb.df557e",
+        "version": 7,
+        "debugenabled": false,
+        "action": "homeassistant.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.front_lights",
+            "light.hallway_light",
+            "light.light_strip_295a"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_on",
+        "x": 980,
+        "y": 400,
+        "wires": [
+            [
+                "f02b9927d0c0958d",
+                "59e97fe4c160b05e"
+            ]
+        ]
+    },
+    {
+        "id": "9d63ff87bf175d46",
+        "type": "switch",
+        "z": "ea4925064d82461c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 830,
+        "y": 400,
+        "wires": [
+            [
+                "f66ef985b815500f",
+                "71f972822538ac70"
+            ]
+        ]
+    },
+    {
+        "id": "f02b9927d0c0958d",
+        "type": "delay",
+        "z": "ea4925064d82461c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 1140,
+        "y": 380,
+        "wires": [
+            [
+                "8c547ed0cf2f6872"
+            ]
+        ]
+    },
+    {
+        "id": "8c547ed0cf2f6872",
+        "type": "api-call-service",
+        "z": "ea4925064d82461c",
+        "name": "LightsOff",
+        "server": "315411fb.df557e",
+        "version": 7,
+        "debugenabled": false,
+        "action": "homeassistant.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.front_lights"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "x": 1300,
+        "y": 380,
+        "wires": [
+            [
+                "29d8fd68f986b76d"
+            ]
+        ]
+    },
+    {
+        "id": "df96430c597a838f",
+        "type": "server-state-changed",
+        "z": "ea4925064d82461c",
+        "name": "Sara",
+        "server": "315411fb.df557e",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "device_tracker.sara_magic_v3"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": true,
+        "ignorePrevStateUnknown": true,
+        "ignorePrevStateUnavailable": true,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "x": 290,
+        "y": 500,
+        "wires": [
+            [
+                "5feba136b33f4aa8"
+            ]
+        ]
+    },
+    {
+        "id": "ef4d67a74f5d6bc1",
+        "type": "trigger-state",
+        "z": "ea4925064d82461c",
+        "name": "nestOccupied",
+        "server": "315411fb.df557e",
+        "version": 5,
+        "inputs": 0,
+        "outputs": 2,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "input_boolean.nestoccupied"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "debugEnabled": false,
+        "constraints": [
+            {
+                "targetType": "this_entity",
+                "targetValue": "",
+                "propertyType": "current_state",
+                "propertyValue": "new_state.state",
+                "comparatorType": "is",
+                "comparatorValueDatatype": "bool",
+                "comparatorValue": "true"
+            }
+        ],
+        "customOutputs": [],
+        "outputInitially": false,
+        "stateType": "str",
+        "enableInput": false,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "29d8fd68f986b76d",
+        "type": "delay",
+        "z": "ea4925064d82461c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 1460,
+        "y": 360,
+        "wires": [
+            [
+                "bd650705f7970cb0"
+            ]
+        ]
+    },
+    {
+        "id": "bd650705f7970cb0",
+        "type": "api-call-service",
+        "z": "ea4925064d82461c",
+        "name": "LightsOff",
+        "server": "315411fb.df557e",
+        "version": 7,
+        "debugenabled": false,
+        "action": "homeassistant.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "light.front_lights",
+            "light.hallway_light"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "x": 1620,
+        "y": 360,
+        "wires": [
+            [
+                "59e97fe4c160b05e"
+            ]
+        ]
+    },
+    {
+        "id": "b2ebd3e1ba3e319b",
         "type": "function",
         "z": "ea4925064d82461c",
-        "name": "arivedHomeAtNight",
-        "func": "var david = flow.get(\"david\");\nvar davidOld = flow.get(\"davidOld\");\nvar sara = flow.get(\"sara\");\nvar saraOld = flow.get(\"saraOld\");\nvar sun = flow.get(\"sun\");\n\nif (david === \"home\" && sun === \"above_horizon\") {\n    flow.set(\"davidOld\", \"home\")\n}\nelse if (david === \"home\" && sun === \"below_horizon\") {\n    if (sun === \"below_horizon\" && davidOld === \"not_home\"){\n        msg.payload = \"On\";\n        flow.set(\"davidOld\", \"home\");\n        return msg;\n    }\n}\n\nelse if (sara === \"home\" && sun === \"above_horizon\") {\n    flow.set(\"saraOld\", \"home\")\n}\nelse if (sara === \"home\" && sun === \"below_horizon\") {\n    if (sun === \"below_horizon\" && saraOld === \"not_home\") {\n        msg.payload = \"On\";\n        flow.set(\"saraOld\", \"home\");\n        return msg;\n    }\n}",
+        "name": "david",
+        "func": "flow.set(\"davidOld\", flow.get(\"david\"));\nflow.set(\"david\",msg.payload);\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 710,
-        "y": 480,
+        "x": 430,
+        "y": 300,
+        "wires": [
+            [
+                "cf71cdacdc73ac32",
+                "230dd2cad769c256"
+            ]
+        ]
+    },
+    {
+        "id": "230dd2cad769c256",
+        "type": "function",
+        "z": "ea4925064d82461c",
+        "name": "arivedHomeAtNight",
+        "func": "var david = flow.get(\"david\");\nvar davidOld = flow.get(\"davidOld\");\nvar sara = flow.get(\"sara\");\nvar saraOld = flow.get(\"saraOld\");\nvar sun = flow.get(\"sun\");\n\nif (david === \"home\" && sun === \"above_horizon\") {\n    flow.set(\"davidOld\", \"home\")\n}\nelse if (david === \"home\" && sun === \"below_horizon\") {\n    if (sun === \"below_horizon\" && davidOld === \"not_home\"){\n        msg.payload = \"on\";\n        flow.set(\"davidOld\", \"home\");\n        return msg;\n    }\n}\n\nelse if (sara === \"home\" && sun === \"above_horizon\") {\n    flow.set(\"saraOld\", \"home\")\n}\nelse if (sara === \"home\" && sun === \"below_horizon\") {\n    if (sun === \"below_horizon\" && saraOld === \"not_home\") {\n        msg.payload = \"on\";\n        flow.set(\"saraOld\", \"home\");\n        return msg;\n    }\n}",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 400,
         "wires": [
             [
                 "9d63ff87bf175d46",
                 "ef2de5c605cb0d30"
             ]
         ]
+    },
+    {
+        "id": "5feba136b33f4aa8",
+        "type": "function",
+        "z": "ea4925064d82461c",
+        "name": "sara",
+        "func": "flow.set(\"saraOld\", flow.get(\"sara\"));\nflow.set(\"sara\",msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 500,
+        "wires": [
+            [
+                "230dd2cad769c256"
+            ]
+        ]
+    },
+    {
+        "id": "6827a7118bb9c23b",
+        "type": "function",
+        "z": "ea4925064d82461c",
+        "name": "sun",
+        "func": "flow.set(\"sun\",msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 400,
+        "wires": [
+            [
+                "230dd2cad769c256"
+            ]
+        ]
+    },
+    {
+        "id": "cf71cdacdc73ac32",
+        "type": "debug",
+        "z": "ea4925064d82461c",
+        "name": "debug 25",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ef2de5c605cb0d30",
+        "type": "debug",
+        "z": "ea4925064d82461c",
+        "name": "debug 26",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7ca84c9ed12ce9f5",
+        "type": "inject",
+        "z": "ea4925064d82461c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "home",
+        "payloadType": "str",
+        "x": 290,
+        "y": 260,
+        "wires": [
+            [
+                "b2ebd3e1ba3e319b"
+            ]
+        ]
+    },
+    {
+        "id": "6e79313c2cb4b8eb",
+        "type": "inject",
+        "z": "ea4925064d82461c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "not_home",
+        "payloadType": "str",
+        "x": 280,
+        "y": 340,
+        "wires": [
+            [
+                "b2ebd3e1ba3e319b"
+            ]
+        ]
+    },
+    {
+        "id": "42bd19dd7ab3ab3a",
+        "type": "inject",
+        "z": "ea4925064d82461c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "\"above_horizon\"",
+        "payloadType": "str",
+        "x": 260,
+        "y": 380,
+        "wires": [
+            [
+                "6827a7118bb9c23b"
+            ]
+        ]
+    },
+    {
+        "id": "01e3f39ffccc9ba5",
+        "type": "inject",
+        "z": "ea4925064d82461c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "\"below_horizon\"",
+        "payloadType": "str",
+        "x": 280,
+        "y": 460,
+        "wires": [
+            [
+                "6827a7118bb9c23b"
+            ]
+        ]
+    },
+    {
+        "id": "0302d1ac6b067018",
+        "type": "server-state-changed",
+        "z": "ea4925064d82461c",
+        "name": "Sun",
+        "server": "315411fb.df557e",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "sun.sun"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "x": 70,
+        "y": 420,
+        "wires": [
+            [
+                "6827a7118bb9c23b",
+                "8f85a26e9597e053"
+            ]
+        ]
+    },
+    {
+        "id": "8f85a26e9597e053",
+        "type": "debug",
+        "z": "ea4925064d82461c",
+        "name": "debug 32",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 260,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "0b0410982a400eee",
+        "type": "server-state-changed",
+        "z": "ea4925064d82461c",
+        "name": "David",
+        "server": "315411fb.df557e",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "device_tracker.david_magic_v3"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": true,
+        "ignorePrevStateUnknown": true,
+        "ignorePrevStateUnavailable": true,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            }
+        ],
+        "x": 130,
+        "y": 300,
+        "wires": [
+            [
+                "b2ebd3e1ba3e319b"
+            ]
+        ]
+    },
+    {
+        "id": "fc56ef7bb72c68b0",
+        "type": "server-state-changed",
+        "z": "ea4925064d82461c",
+        "name": "holidayMode",
+        "server": "315411fb.df557e",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "input_boolean.holidaymode"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": true,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": false,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 270,
+        "y": 580,
+        "wires": [
+            [
+                "1404ca3f918bfa67"
+            ]
+        ]
+    },
+    {
+        "id": "1404ca3f918bfa67",
+        "type": "function",
+        "z": "ea4925064d82461c",
+        "name": "holidayMode",
+        "func": "flow.set(\"holidayMode\",msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 580,
+        "wires": [
+            [
+                "ca3482d6244c2b0d"
+            ]
+        ]
+    },
+    {
+        "id": "71f972822538ac70",
+        "type": "function",
+        "z": "ea4925064d82461c",
+        "name": "arivedAtNight",
+        "func": "flow.set(\"arivedAtNight\",msg.payload);\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 460,
+        "wires": [
+            [
+                "ca3482d6244c2b0d"
+            ]
+        ]
+    },
+    {
+        "id": "59e97fe4c160b05e",
+        "type": "function",
+        "z": "ea4925064d82461c",
+        "name": "arivedAtNight",
+        "func": "flow.set(\"arivedAtNight\",'off');\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1300,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ca3482d6244c2b0d",
+        "type": "function",
+        "z": "ea4925064d82461c",
+        "name": "arivedAtNightHoliday",
+        "func": "var holidayMode = flow.get(\"holidayMode\");\nvar arivedAtNight = flow.get(\"arivedAtNight\");\nvar timeNow = flow.get(\"time\");\n\nif (holidayMode === \"on\" && arivedAtNight === \"on\") {\n    if (timeNow >= '0' && timeNow <= '600') {\n            msg.payload = \"On\"\n            return msg;\n        }\n    else {\n        msg.payload = \"noting\"\n            return msg;\n    }\n}\nelse {\n    msg.payload = \"noting\"\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 600,
+        "wires": [
+            [
+                "a32181dac7b01a3f"
+            ]
+        ]
+    },
+    {
+        "id": "6029444c27d09c14",
+        "type": "moment",
+        "z": "ea4925064d82461c",
+        "name": "",
+        "topic": "",
+        "input": "",
+        "inputType": "msg",
+        "inTz": "",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "",
+        "locale": "",
+        "output": "",
+        "outputType": "msg",
+        "outTz": "",
+        "x": 240,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5d2f77b6ea0244e8",
+        "type": "function",
+        "z": "ea4925064d82461c",
+        "name": "time",
+        "func": "flow.set(\"time\", Number(msg.payload));\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 640,
+        "wires": [
+            [
+                "ca3482d6244c2b0d"
+            ]
+        ]
+    },
+    {
+        "id": "4a040820e05930b9",
+        "type": "moment",
+        "z": "ea4925064d82461c",
+        "name": "Time",
+        "topic": "",
+        "input": "",
+        "inputType": "msg",
+        "inTz": "Europe/London",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "HHmm",
+        "locale": "C",
+        "output": "",
+        "outputType": "msg",
+        "outTz": "Europe/London",
+        "x": 330,
+        "y": 640,
+        "wires": [
+            [
+                "5d2f77b6ea0244e8"
+            ]
+        ]
+    },
+    {
+        "id": "53f04d8fe709c6df",
+        "type": "inject",
+        "z": "ea4925064d82461c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 640,
+        "wires": [
+            [
+                "4a040820e05930b9"
+            ]
+        ]
+    },
+    {
+        "id": "a32181dac7b01a3f",
+        "type": "switch",
+        "z": "ea4925064d82461c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "On",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1030,
+        "y": 600,
+        "wires": [
+            [
+                "ded80a86fd476b8c"
+            ]
+        ]
+    },
+    {
+        "id": "ded80a86fd476b8c",
+        "type": "api-call-service",
+        "z": "ea4925064d82461c",
+        "name": "LightsOn",
+        "server": "315411fb.df557e",
+        "version": 7,
+        "debugenabled": false,
+        "action": "homeassistant.turn_on",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.smart_switch_1806297051516329081534298f15af15_outlet",
+            "switch.tree"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_on",
+        "x": 1180,
+        "y": 600,
+        "wires": [
+            [
+                "15574a75434c1101",
+                "59e97fe4c160b05e"
+            ]
+        ]
+    },
+    {
+        "id": "15574a75434c1101",
+        "type": "delay",
+        "z": "ea4925064d82461c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 1340,
+        "y": 580,
+        "wires": [
+            [
+                "eb063b4b8bcaeb9c"
+            ]
+        ]
+    },
+    {
+        "id": "eb063b4b8bcaeb9c",
+        "type": "api-call-service",
+        "z": "ea4925064d82461c",
+        "name": "LightsOff",
+        "server": "315411fb.df557e",
+        "version": 7,
+        "debugenabled": false,
+        "action": "homeassistant.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.smart_switch_1806297051516329081534298f15af15_outlet"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "x": 1500,
+        "y": 580,
+        "wires": [
+            [
+                "42cb72fdfe5996ee"
+            ]
+        ]
+    },
+    {
+        "id": "42cb72fdfe5996ee",
+        "type": "delay",
+        "z": "ea4925064d82461c",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "minutes",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 1660,
+        "y": 560,
+        "wires": [
+            [
+                "4dabdbac0be47e93"
+            ]
+        ]
+    },
+    {
+        "id": "4dabdbac0be47e93",
+        "type": "api-call-service",
+        "z": "ea4925064d82461c",
+        "name": "LightsOff",
+        "server": "315411fb.df557e",
+        "version": 7,
+        "debugenabled": false,
+        "action": "homeassistant.turn_off",
+        "floorId": [],
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "switch.smart_switch_1806297051516329081534298f15af15_outlet",
+            "switch.tree"
+        ],
+        "labelId": [],
+        "data": "",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "blockInputOverrides": false,
+        "domain": "homeassistant",
+        "service": "turn_off",
+        "x": 1820,
+        "y": 560,
+        "wires": [
+            [
+                "59e97fe4c160b05e"
+            ]
+        ]
+    },
+    {
+        "id": "315411fb.df557e",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 5,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true,
+        "heartbeat": false,
+        "heartbeatInterval": 30,
+        "areaSelector": "friendlyName",
+        "deviceSelector": "friendlyName",
+        "entitySelector": "friendlyName",
+        "statusSeparator": "at: ",
+        "statusYear": "hidden",
+        "statusMonth": "short",
+        "statusDay": "numeric",
+        "statusHourCycle": "h23",
+        "statusTimeFormat": "h:m",
+        "enableGlobalContextStore": true
     }
 ]
