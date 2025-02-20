@@ -137,7 +137,7 @@
         "exposeAsEntityConfig": "",
         "entities": {
             "entity": [
-                "device_tracker.sara_magic_v3"
+                "person.sara"
             ],
             "substring": [],
             "regex": []
@@ -364,15 +364,16 @@
         "id": "cf71cdacdc73ac32",
         "type": "debug",
         "z": "ea4925064d82461c",
-        "name": "debug 25",
+        "name": "davidDebug",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 620,
+        "x": 630,
         "y": 300,
         "wires": []
     },
@@ -380,15 +381,16 @@
         "id": "ef2de5c605cb0d30",
         "type": "debug",
         "z": "ea4925064d82461c",
-        "name": "debug 26",
+        "name": "arivedDebug",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 840,
+        "x": 850,
         "y": 360,
         "wires": []
     },
@@ -543,15 +545,16 @@
         "id": "8f85a26e9597e053",
         "type": "debug",
         "z": "ea4925064d82461c",
-        "name": "debug 32",
+        "name": "sunDebug",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 260,
+        "x": 250,
         "y": 420,
         "wires": []
     },
@@ -566,7 +569,7 @@
         "exposeAsEntityConfig": "",
         "entities": {
             "entity": [
-                "device_tracker.david_magic_v3"
+                "person.david"
             ],
             "substring": [],
             "regex": []
